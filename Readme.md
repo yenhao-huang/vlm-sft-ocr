@@ -1,6 +1,6 @@
 # VLM-SFT-OCR
 
-We fine-tuning vision-language models for OCR tasks. 
+This project focuses on fine-tuning vision-language models for OCR, aiming to support various document elements (text, tables, seals, etc.) and deliver strong Chinese text recognition.
 
 
 ## Results
@@ -16,7 +16,7 @@ We fine-tuning vision-language models for OCR tasks.
 | DotsOCR | 0.805 | 0.394 |
 | PaddleOCR | 0.851 | 0.354 |
 
-
+<專有名詞>
 ![Terms Metadata](metadata/terms.png)
 
 ## Project Structure
@@ -28,7 +28,7 @@ core/
 ├── evaluate.py                     # Main evaluation script for OCR models
 ├── count_score.py                  # Score calculation with text normalization
 ├── gemma_adapter_merge.py          # Merge LoRA adapters to base model
-├── splt_dataset.py                 # Split raw data to train/val/test set
+├── split_dataset.py                 # Split raw data to train/val/test set
 └── data_analysis/                  # Analysis and visualization tools
 
 configs/hyperparm_configs/
@@ -133,13 +133,13 @@ Find the best hyperparameters automatically using Optuna:
 
 ```bash
 # Quick start - Bayesian optimization with 20 trials (recommended)
-python core/hyperparameter_search.py \
+python core/gemma_hyperparameter_search.py \
   --study-name gemma-ocr-opt \
   --n-trials 20 \
   --config configs/hyperparm_configs/optuna/default.json
 
 # Custom configuration with all options
-python core/hyperparameter_search.py \
+python core/gemma_hyperparameter_search.py \
   --study-name my-ocr-search \
   --search-mode bayesian \
   --n-trials 20 \
@@ -261,7 +261,7 @@ For detailed documentation on all core scripts including hyperparameter search, 
 
 **Quick Links:**
 - [Training Scripts](core/README.md#training-scripts) - `sft_gemma.py`
-- [Hyperparameter Search](core/README.md#hyperparameter-search) - `hyperparameter_search.py`
+- [Hyperparameter Search](core/README.md#hyperparameter-search) - `gemma_hyperparameter_search.py`
 - [Evaluation Scripts](core/README.md#evaluation-scripts) - `evaluate.py`, `count_score.py`
 - [Model Management](core/README.md#model-management) - `gemma_adapter_merge.py`
 - [Data Processing](core/README.md#data-processing) - `split_dataset.py`
