@@ -16,6 +16,7 @@ This project focuses on fine-tuning vision-language models for OCR, aiming to su
 | DotsOCR | 0.805 | 0.394 |
 | PaddleOCR | 0.851 | 0.354 |
 
+Notes: gemma3-12b: no fine-tuning; gemma3-12b-sft: SFT; gemma3-12b-hps: SFT + hyperparameter search.
 
 ## Metadata Examples
 
