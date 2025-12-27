@@ -16,9 +16,14 @@ This project focuses on fine-tuning vision-language models for OCR, aiming to su
 | DotsOCR | 0.805 | 0.394 |
 | PaddleOCR | 0.851 | 0.354 |
 
-<專有名詞>
+
+## Metadata Examples
+
+### 專有名詞 (Terminology)
 ![Terms Metadata](metadata/terms.png)
 
+### 表格 (Tables)
+![Table Metadata](metadata/table.png)
 ## Project Structure
 
 ```
