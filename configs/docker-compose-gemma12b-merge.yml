@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  vllm:
+    # for 79
+    #image: vllm/vllm-openai:v0.11.2
+    # for 78
+    image: vllm/vllm-openai:v0.8.4
+    container_name: gemma-12b-sft
+    restart: unless-stopped
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: ["gpu"]
+              device_ids: ["0", "1"]
+
+    ports:
+      - "3472:8000"
+
+    volumes:
+      - /tmp2/howard/vl-sft-ocr/models/merged--gemma-3-hyperparam-search:/workspace/llm_model
+
+    shm_size: "16g"
+
+    environment:
+      - CUDA_VISIBLE_DEVICES=0,1
+      - VLLM_LOG_LEVEL=INFO
+      - VLLM_TORCH_COMPILE=0
+
+    command:
+      - "--model"
+      - "/workspace/llm_model"
+      - "--served-model-name"
+      - "gemma-12b"
+      - "--pipeline-parallel-size"
+      - "2"
+      - "--max-model-len"
+      - "8192"
+      - "--max-num-seqs"
+      - "1"
+      - "--gpu-memory-utilization"
+      - "0.85"
+      - "--trust-remote-code"
+      - "--enforce-eager"

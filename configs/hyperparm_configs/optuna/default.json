@@ -1,0 +1,30 @@
+{
+  "search_space": {
+    "learning_rate": {
+      "type": "loguniform",
+      "low": 1e-5,
+      "high": 5e-4
+    },
+    "num_train_epochs": {
+      "type": "int",
+      "low": 2,
+      "high": 5
+    }
+  },
+  "model_name": "/tmp2/share_data/google--gemma-3-12b-it",
+  "input_data": "data/input/ocr_non_test.json",
+  "instruction": "請給我 OCR 結果",
+  "max_seq_length": 8192,
+  "load_in_4bit": true,
+  "train_split": "train[:90%]",
+  "val_split": "train[90%:]",
+  "lora_r": 16,
+  "lora_alpha": 16,
+  "gradient_accumulation_steps": 4,
+  "per_device_train_batch_size": 1,
+  "warmup_ratio": 0.1,
+  "eval_steps": 100,
+  "save_steps": 100,
+  "base_output_dir": "models/hyperparam_search",
+  "report_to_wandb": true
+}
