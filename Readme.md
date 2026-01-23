@@ -1,4 +1,4 @@
-# VLM-SFT-OCR
+# Gemma-OCR
 
 This project focuses on fine-tuning vision-language models for OCR, aiming to support various document elements (text, tables, seals, etc.) and deliver strong Chinese text recognition.
 
